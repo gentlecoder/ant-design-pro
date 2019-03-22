@@ -1,6 +1,13 @@
-import * as React from 'react';
-export interface IEllipsisProps {
-  tooltip?: boolean;
+import React from 'react';
+import { TooltipProps } from 'antd/lib/tooltip';
+
+export interface EllipsisTooltipProps extends TooltipProps {
+  title?: undefined;
+  overlayStyle?: undefined;
+}
+
+export interface EllipsisProps {
+  tooltip?: boolean | EllipsisTooltipProps;
   length?: number;
   lines?: number;
   style?: React.CSSProperties;
@@ -8,4 +15,7 @@ export interface IEllipsisProps {
   fullWidthRecognition?: boolean;
 }
 
-export default class Ellipsis extends React.Component<IEllipsisProps, any> {}
+export function getStrFullLength(str: string): number;
+export function cutStrByFullLength(str: string, maxLength: number): string;
+
+export default class Ellipsis extends React.Component<EllipsisProps, any> {}
